@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Js test</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+</head>
+<body style="background: grey">
+<aside>hello</aside>
+<script>
+  function loadScript(src, callback) {
+    let script = document.createElement('script');
+    script.src = src;
+    script.onload = () => callback(null, script)
+    script.onerror = () => callback(
+      new Ercror(`Fail: ${src}`), script
+    )
+    document.head.append(script);
+  }
+
+  loadScript('../js/blindWriter.js', function () {
+    iterateArray(specSymbols, 1400, true)
+  })
+  // loadScript('js/main.js', () => {})
+</script>
+</body>
+</html>
